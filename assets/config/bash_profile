@@ -17,3 +17,6 @@ if [ -e "/opt/software/gromacs5/bin/GMXRC" ]
 then
     source /opt/software/gromacs5/bin/GMXRC
 fi
+
+# Set PYMOL_PATH
+export PYMOL_PATH="/usr/lib/pymodules/python2.6/pymol"
