@@ -19,4 +19,5 @@ then
 fi
 
 # Set PYMOL_PATH
+echo "import psico.fullinit" > ~/.pymolrc.py
 export PYMOL_PATH="/usr/lib/pymodules/python2.6/pymol"
