@@ -24,8 +24,6 @@ echo "[++] Downloading & installing biopython"
 git clone https://github.com/biopython/biopython /opt/software/biopython > /dev/null
 (cd /opt/software/biopython && python setup.py build && python setup.py install) > /dev/null
 
-echo "[++] Downloading & installing biopython"
-git clone //github.com/JoaoRodrigues/pymol-psico.git \
-    --branch legacy_support --single-branch \
-    /opt/software/pymol-psico > /dev/null
-(cd /opt/software/pymol-psico && python setup.py install) > /dev/null
+echo "[++] Downloading & installing pymol-psico"
+git clone https://github.com/JoaoRodrigues/pymol-psico.git /opt/software/pymol-psico > /dev/null
+(cd /opt/software/pymol-psico && git checkout legacy_support && python setup.py install) > /dev/null
