@@ -21,7 +21,7 @@ machine will start a user session before all the software is installed. Take a b
 for a coffee or for a walk. When all the provisioning is done, you can start using the machine.
 
 ```bash
-git clone https://github.com/haddocking/haddockVM
+git clone https://github.com/haddocking/molmod
 cd haddockVM
 vagrant up
 ```
