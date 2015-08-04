@@ -1,0 +1,19 @@
+# Put additional definitions here
+# This file will be loaded when initiating a new session
+
+echo "Welcome back haddocker!"
+
+# Set PATH
+export PATH="/opt/bin:${PATH}"
+
+# Set PYTHONPATH
+export PYTHONPATH="/usr/lib/modeller9.15/lib/i386-intel8/python2.5:/usr/lib/modeller9.15/modlib/:${PYTHONPATH}"
+
+# Set dynamic libraries path
+export LD_LIBRARY_PATH="/usr/lib/modeller9.15/lib/i386-intel8:${LD_LIBRARY_PATH}"
+
+# GROMACS source file
+if [ -e "/opt/software/gromacs5/bin/GMXRC" ]
+then
+    source /opt/software/gromacs5/bin/GMXRC
+fi
