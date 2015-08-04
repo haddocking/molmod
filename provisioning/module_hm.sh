@@ -32,7 +32,7 @@ if [ ! -z "$success" ]
 then
   echo '[!!] MODELLER installation failed: wrong key' 1>&2
   echo '[!!] To obtain a valid key visit: https://salilab.org/modeller/' 1>&2
-  echo '[!!] See the /usr/lib/modeller9.15/modlib/modeller/config.py file'
+  echo '[!!] See the /usr/lib/modeller9.15/modlib/modeller/config.py file' 1>&2
 fi
 
 rm -f /opt/software/modeller_9.15-1_i386.deb
