@@ -9,12 +9,13 @@ export DEBIAN_FRONTEND=noninteractive # StackOverflow 500764
 
 ## Make /opt directory structure
 echo "[+] Creating /opt directory structure"
-mkdir /opt/img /opt/database /opt/software /opt/bin
+mkdir /opt/database /opt/software /opt/bin
 
 ## Copy assets
 echo "[+] Copying assets"
-cp -r /vagrant/assets/img /opt/img
-chmod -R 755 /opt/img/
+
+cp /vagrant/assets/config/bashrc ~haddocker/.bashrc
+chown haddocker:haddocker ~haddocker/.bashrc
 
 cp /vagrant/assets/config/bash_profile ~haddocker/.bash_profile
 chown haddocker:haddocker ~haddocker/.bash_profile
@@ -74,6 +75,7 @@ if [ ! -z "$success" ]
 then
   echo '[!!] MODELLER installation failed: wrong key' 1>&2
   echo '[!!] To obtain a valid key visit: https://salilab.org/modeller/' 1>&2
+  echo '[!!] See the /usr/lib/modeller9.15/modlib/modeller/config.py file'
 fi
 
 rm -f modeller_9.15-1_i386.deb
