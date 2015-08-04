@@ -8,3 +8,5 @@ export DEBIAN_FRONTEND=noninteractive # StackOverflow 500764
 echo "[+] Provisioning: Module Data"
 echo "[++] Downloading data for the molmod modules"
 git clone https://github.com/JoaoRodrigues/molmod-data.git /opt/data/
+
+ln -s /opt/data/py/*py /opt/bin/
