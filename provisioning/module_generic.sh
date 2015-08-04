@@ -18,6 +18,7 @@ ln -s /opt/software/dssp/dssp /opt/bin/
 # Git repositories
 echo "[++] Downloading & installing pdb-tools"
 git clone https://github.com/haddocking/pdb-tools /opt/software/pdb-tools > /dev/null
+ln -s /opt/software/pdb-tools/*py /opt/bin
 
 echo "[++] Downloading & installing biopython"
 git clone https://github.com/biopython/biopython /opt/software/biopython > /dev/null
