@@ -12,13 +12,12 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  # config.vm.box = "joaorodrigues/haddockVM"
-  config.vm.box = "file:///Users/joao/work/v_boxes/courseVM.box"
+  config.vm.box = "joaorodrigues/courseVM"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
-  # config.vm.box_check_update = true
+  config.vm.box_check_update = true
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
@@ -44,16 +43,19 @@ Vagrant.configure(2) do |config|
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
   #
-  # config.vm.provider "virtualbox" do |vb|
-  #   # Display the VirtualBox GUI when booting the machine
-  #   vb.gui = true
-  #
-  #   # Customize the amount of memory on the VM:
-  #   vb.memory = "1024"
-  #
-  #   # Customize amount of video memory on the VM:
-  #   vb.customize ["modifyvm", :id, "--vram", "128"]
-  # end
+  config.vm.provider "virtualbox" do |vb|
+    # Display the VirtualBox GUI when booting the machine
+    vb.gui = false
+
+    # Customize the amount of memory on the VM:
+    vb.memory = "1024"
+
+    # Customize amount of video memory on the VM:
+    vb.customize ["modifyvm", :id, "--vram", "128"]
+
+    # Customize number of CPUs
+    vb.cpus = 1
+  end
   #
   # View the documentation for the provider you are using for more
   # information on available options.
