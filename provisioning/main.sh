@@ -27,7 +27,7 @@ add-apt-repository ppa:roblib/ppa &> /dev/null # cmake, req. for GROMACS
 (apt-get -qq update && apt-get -qq -y upgrade && apt-get -qq -y dist-upgrade) > /dev/null
 
 # Building tools
-apt-get install -y --no-install-recommends cmake build-essential > /dev/null
+apt-get install -y --no-install-recommends git cmake build-essential > /dev/null
 
 # Python libs
 apt-get install -y --no-install-recommends python-numpy python-matplotlib \
