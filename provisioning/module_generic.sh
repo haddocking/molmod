@@ -27,3 +27,9 @@ git clone https://github.com/biopython/biopython /opt/software/biopython > /dev/
 echo "[++] Downloading & installing pymol-psico"
 git clone https://github.com/JoaoRodrigues/pymol-psico.git /opt/software/pymol-psico > /dev/null
 (cd /opt/software/pymol-psico && git checkout legacy_support && python setup.py install) > /dev/null
+
+echo "[++] Downloading & installing freesasa"
+git clone https://github.com/JoaoRodrigues/freesasa /opt/software/freesasa > /dev/null
+(cd /opt/software/freesasa && git checkout no-check && autoreconf -i && ./configure && make ) > /dev/null
+ln -s /opt/software/freesasa/src/freesasa /opt/bin/
+ln -s /opt/software/freesasa/share/naccess.config /opt/data/
