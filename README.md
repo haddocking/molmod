@@ -5,7 +5,8 @@ is intended to serve a fully-functional up-to-date copy of the VM image both for
 developers and end-users.
 
 ### Requirements
-* [Vagrant]((https://www.vagrantup.com/))
+* [VirtualBox 5.0+](https://www.virtualbox.com/)
+* [Vagrant](https://www.vagrantup.com/)
 * [Git](https://git-scm.com/)
 * 2-8 GB of hard disk space, depending on usage
 * An active internet connection
