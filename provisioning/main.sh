@@ -29,19 +29,6 @@ add-apt-repository ppa:roblib/ppa &> /dev/null # cmake, req. for GROMACS
 # Building tools
 apt-get install -y --no-install-recommends git cmake build-essential > /dev/null
 
-# Manually compile & install autoconf/make/etc
-wget -q http://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.gz > /dev/null
-(tar -xzf autoconf-2.69.tar.gz && cd autoconf-2.69 && ./configure && make && sudo make install) > /dev/null
-rm -rf autoconf-2.69.tar.gz autoconf-2.69
-
-wget -q http://ftp.gnu.org/gnu/automake/automake-1.15.tar.gz > /dev/null
-(tar -xzf automake-1.15.tar.gz && cd automake-1.15 && ./configure && make && sudo make install) > /dev/null
-rm -rf automake-1.15.tar.gz automake-1.15
-
-wget -q http://ftp.gnu.org/gnu/libtool/libtool-2.4.6.tar.gz > /dev/null
-(tar -xzf libtool-2.4.6.tar.gz && cd libtool-2.4.6 && ./configure && make && sudo make install) > /dev/null
-rm -rf libtool-2.4.6.tar.gz libtool-2.4.6
-
 # Python libs
 apt-get install -y --no-install-recommends python-numpy python-matplotlib \
                                            python-dev > /dev/null

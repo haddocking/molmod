@@ -30,6 +30,6 @@ git clone https://github.com/JoaoRodrigues/pymol-psico.git /opt/software/pymol-p
 
 echo "[++] Downloading & installing freesasa"
 git clone https://github.com/JoaoRodrigues/freesasa /opt/software/freesasa > /dev/null
-(cd /opt/software/freesasa && git checkout no-check && autoreconf -i && ./configure && make ) > /dev/null
+(cd /opt/software/freesasa && git checkout with-configure && ./configure && make ) > /dev/null
 ln -s /opt/software/freesasa/src/freesasa /opt/bin/
 ln -s /opt/software/freesasa/share/naccess.config /opt/data/
