@@ -13,11 +13,14 @@ developers and end-users.
 
 ### Quick Start
 ```bash
-git clone https://github.com/haddocking/molmod
-cd molmod
-# Change vb.gui to 'true' in the VagrantFile
+git clone https://github.com/JoaoRodrigues/molmod-vm
+cd molmod-vm
+# Edit the VagrantFile to:
+#    * enable GUI: change 'vb.gui' to 'true'
+#    * enable/disable specific provisioners
 vagrant up
 # Wait for all the provisioners to finish
+# This might take a while.
 vagrant ssh
 su -l haddocker # password 'haddock'
 # Have fun!
