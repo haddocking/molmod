@@ -32,4 +32,4 @@ echo "[++] Downloading & installing freesasa"
 git clone https://github.com/JoaoRodrigues/freesasa /opt/software/freesasa > /dev/null
 (cd /opt/software/freesasa && git checkout with-configure && ./configure && make ) > /dev/null
 ln -s /opt/software/freesasa/src/freesasa /opt/bin/
-ln -s /opt/software/freesasa/share/naccess.config /opt/data/
+ln -s /opt/software/freesasa/share/naccess.config /opt/share/

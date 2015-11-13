@@ -42,5 +42,5 @@ rm -f /opt/software/modeller_9.15-1_i386.deb
 
 # Download the pdb_seqres database
 echo "[++] Downloading the PDB sequence database"
-wget -q -O /opt/data/pdb_seqres.txt \
+wget -q -O /opt/share/pdb_seqres.txt \
     ftp://ftp.rcsb.org/pub/pdb/derived_data/pdb_seqres.txt
