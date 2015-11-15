@@ -74,5 +74,5 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", path: "provisioning/module_data.sh", name: "Molmod Data"
   config.vm.provision "shell", path: "provisioning/module_generic.sh", name: "Module Generic"
   config.vm.provision "shell", path: "provisioning/module_hm.sh", name: "Module HM"
-  # config.vm.provision "shell", path: "provisioning/module_md.sh", name: "Module MD"
+  config.vm.provision "shell", path: "provisioning/module_md.sh", name: "Module MD"
 end
