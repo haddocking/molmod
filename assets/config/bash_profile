@@ -19,5 +19,6 @@ then
 fi
 
 # Set PYMOL_PATH
-echo "import psico.fullinit" > ~/.pymolrc.py
+echo "import psico.fullinit" > ~/.pymolrc
+[[ -e "/opt/bin/build_seq.py" ]] && echo "run /opt/bin/build_seq.py" >> ~/.pymolrc
 export PYMOL_PATH="/usr/lib/pymodules/python2.6/pymol"
