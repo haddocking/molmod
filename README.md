@@ -13,7 +13,7 @@ developers and end-users.
 
 ### Quick Start
 ```bash
-git clone https://github.com/JoaoRodrigues/molmod-vm
+git clone https://github.com/haddocking/molmod-vm
 cd molmod-vm
 # Edit the VagrantFile to:
 #    * enable GUI: change 'vb.gui' to 'true'
