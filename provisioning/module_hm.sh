@@ -9,6 +9,10 @@ echo "[+] Provisioning: Homology Modelling module"
 
 ## HMMER
 echo "[++] Downloading & installing HMMER"
+if [ -d /opt/software/hmmer3.1b2/ ]
+then
+	rm -rf /opt/software/hmmer3.1b2/ 
+fi
 wget -q -O /opt/software/hmmer-3.1b2.tar.gz http://selab.janelia.org/software/hmmer3/3.1b2/hmmer-3.1b2.tar.gz > /dev/null
 
 (cd /opt/software && tar -xzf hmmer-3.1b2.tar.gz && cd hmmer-3.1b2 && \
@@ -17,7 +21,7 @@ wget -q -O /opt/software/hmmer-3.1b2.tar.gz http://selab.janelia.org/software/hm
 (cd /opt/software/hmmer-3.1b2/easel && make install) > /dev/null
 
 rm -rf /opt/software/hmmer-3.1b2.tar.gz /opt/software/hmmer-3.1b2/
-ln -s /opt/software/hmmer3.1b2/bin/* /opt/bin/
+ln -sf /opt/software/hmmer3.1b2/bin/* /opt/bin/
 
 ## MODELLER
 echo "[++] Downloading & installing MODELLER"

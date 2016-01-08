@@ -9,7 +9,7 @@ export DEBIAN_FRONTEND=noninteractive # StackOverflow 500764
 
 ## Make /opt directory structure
 echo "[+] Creating /opt directory structure"
-mkdir -p /opt/data /opt/software /opt/bin /opt/share
+mkdir -p /opt/data /opt/software /opt/bin /opt/share >& /dev/null
 
 ## Copy assets
 echo "[+] Copying assets"
@@ -24,10 +24,12 @@ chown haddocker:haddocker ~haddocker/.bash_profile
 echo "[+] Updating system and installing packages"
 add-apt-repository ppa:lucid-bleed/ppa &> /dev/null # dpkg, req. for MODELLER
 add-apt-repository ppa:roblib/ppa &> /dev/null # cmake, req. for GROMACS
+add-apt-repository ppa:abelcheung/lucid-dev-backports &> /dev/null # autotools, req. for freesasa
 (apt-get -qq update && apt-get -qq -y upgrade && apt-get -qq -y dist-upgrade) > /dev/null
 
 # Building tools
-apt-get install -y --no-install-recommends git cmake automake build-essential > /dev/null
+apt-get install -y --no-install-recommends git cmake autotools-dev automake \
+										   build-essential libboost1.46-dev > /dev/null
 
 # Python libs
 apt-get install -y --no-install-recommends python-numpy python-matplotlib \

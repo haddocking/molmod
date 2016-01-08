@@ -13,23 +13,50 @@ echo "[++] Downloading & installing dssp"
 mkdir -p /opt/software/dssp
 wget -q -O /opt/software/dssp/dssp ftp://ftp.cmbi.ru.nl/pub/software/dssp/dssp-2.0.4-linux-i386 > /dev/null
 chmod a+x /opt/software/dssp/dssp
-ln -s /opt/software/dssp/dssp /opt/bin/
+ln -sf /opt/software/dssp/dssp /opt/bin/
 
 # Git repositories
 echo "[++] Downloading & installing pdb-tools"
-git clone https://github.com/haddocking/pdb-tools /opt/software/pdb-tools > /dev/null
-ln -s /opt/software/pdb-tools/*py /opt/bin
+if [ -d /opt/software/pdb-tools ]
+then
+	cd /opt/software/pdb-tools
+	git pull origin master
+else
+	git clone https://github.com/haddocking/pdb-tools /opt/software/pdb-tools > /dev/null
+fi
+ln -sf /opt/software/pdb-tools/*py /opt/bin
 
 echo "[++] Downloading & installing biopython"
-git clone https://github.com/biopython/biopython /opt/software/biopython > /dev/null
+if [ -d /opt/software/biopython ]
+then
+	cd /opt/software/biopython
+	git pull origin master
+else
+	git clone https://github.com/biopython/biopython /opt/software/biopython > /dev/null
+fi
 (cd /opt/software/biopython && python setup.py build && python setup.py install) > /dev/null
 
 echo "[++] Downloading & installing pymol-psico"
-git clone https://github.com/JoaoRodrigues/pymol-psico.git /opt/software/pymol-psico > /dev/null
+if [ -d /opt/software/pymol-psico ]
+then
+	cd /opt/software/pymol-psico
+	git pull origin master
+else
+	git clone https://github.com/JoaoRodrigues/pymol-psico.git /opt/software/pymol-psico > /dev/null
+fi
 (cd /opt/software/pymol-psico && git checkout legacy_support && python setup.py install) > /dev/null
 
 echo "[++] Downloading & installing freesasa"
-git clone https://github.com/JoaoRodrigues/freesasa /opt/software/freesasa > /dev/null
-(cd /opt/software/freesasa && git checkout with-configure && ./configure && make ) > /dev/null
-ln -s /opt/software/freesasa/src/freesasa /opt/bin/
-ln -s /opt/software/freesasa/share/naccess.config /opt/share/
+if [ -d /opt/software/freesasa ]
+then
+	cd /opt/software/freesasa
+	git checkout with-configure
+	git reset HEAD --hard
+	git pull origin with-configure
+	aclocal && automake
+else
+	git clone https://github.com/JoaoRodrigues/freesasa /opt/software/freesasa > /dev/null
+fi
+(cd /opt/software/freesasa && git checkout with-configure && aclocal && automake && ./configure && make ) > /dev/null
+ln -sf /opt/software/freesasa/src/freesasa /opt/bin/
+ln -sf /opt/software/freesasa/share/naccess.config /opt/share/
