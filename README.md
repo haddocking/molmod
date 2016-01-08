@@ -5,7 +5,7 @@ is intended to serve a fully-functional up-to-date copy of the VM image both for
 developers and end-users.
 
 ### Requirements
-* [VirtualBox 5.0+](https://www.virtualbox.com/)
+* [VirtualBox 5.0+](https://www.virtualbox.org/)
 * [Vagrant](https://www.vagrantup.com/)
 * [Git](https://git-scm.com/)
 * 2-8 GB of hard disk space, depending on usage
@@ -13,8 +13,8 @@ developers and end-users.
 
 ### Quick Start
 ```bash
-git clone https://github.com/haddocking/molmod-vm
-cd molmod-vm
+git clone https://github.com/haddocking/molmod
+cd molmod
 # Edit the VagrantFile to:
 #    * enable GUI: change 'vb.gui' to 'true'
 #    * enable/disable specific provisioners
@@ -25,6 +25,29 @@ vagrant ssh
 su -l haddocker # password 'haddock'
 # Have fun!
 ```
+
+### For Users
+Download and install both Virtualbox and Vagrant. Make sure to install the Virtualbox Extension Pack as well. Clone this repository to a directory of your liking.
+
+```bash
+git clone https://github.com/haddocking/molmod
+cd molmod
+```
+
+Edit the VagrantFile to enable the GUI and toggle specific provisioners by commenting their lines. Each provisioner installs software for a particular teaching module: Homology Modelling, Molecular Dynamics, or Docking. Edit the number of CPUs and memory available to the VM according to your laptop/desktop specifications. This might have an impact in the performance of the virtual machine. 
+
+If you want to use MODELLER, please head over to the [web page](https://salilab.org/modeller) and obtain a license key. Paste this license key in the `molmod/assets/config/modeller.key` file so that the provisioning scripts can access it.
+
+When you are ready, fire up vagrant, wait for the box to be downloaded (if necessary) and for the provisioners to finish and then login as the haddocker user.
+
+```bash
+vagrant up
+# Wait
+vagrant ssh
+su -l haddocker # password haddock
+```
+
+If for some reason you need to re-run the provisioning scripts (e.g. you forgot the MODELLER key the first time), just run `vagrant provision` on your host machine, i.e., not in the virtual machine terminal session. To run only a particular provisioning script (e.g. homology modelling) try `vagrant provision --provision-with Module_HM`.
 
 ### For Developers
 #### Installation
@@ -37,7 +60,7 @@ course content and its settings, login as the 'haddocker' user (password: haddoc
 
 Since the entire provisioning process takes ~20 minutes (mostly to compile GROMACS), the
 machine will start a user session before all the software is installed. Take a break, go
-for a coffee or for a walk. When all the provisioning is done, you can start using the machine.
+for a coffee, or go for a walk. When all the provisioning is done, you can start using the machine.
 
 ```bash
 git clone https://github.com/haddocking/molmod
