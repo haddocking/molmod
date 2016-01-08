@@ -71,8 +71,8 @@ Vagrant.configure(2) do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", path: "provisioning/main.sh", name: "Main"
-  config.vm.provision "shell", path: "provisioning/module_data.sh", name: "Molmod Data"
-  config.vm.provision "shell", path: "provisioning/module_generic.sh", name: "Module Generic"
-  config.vm.provision "shell", path: "provisioning/module_hm.sh", name: "Module HM"
-  config.vm.provision "shell", path: "provisioning/module_md.sh", name: "Module MD"
+  config.vm.provision "shell", path: "provisioning/module_data.sh", name: "Molmod_Data"
+  config.vm.provision "shell", path: "provisioning/module_generic.sh", name: "Module_Generic"
+  config.vm.provision "shell", path: "provisioning/module_hm.sh", name: "Module_HM"
+  config.vm.provision "shell", path: "provisioning/module_md.sh", name: "Module_MD"
 end
