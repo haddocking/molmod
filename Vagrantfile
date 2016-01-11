@@ -51,7 +51,10 @@ Vagrant.configure(2) do |config|
     vb.memory = "1024"
 
     # Customize amount of video memory on the VM:
-    vb.customize ["modifyvm", :id, "--vram", "128"]
+    vb.customize [ "modifyvm", :id, 
+                   "--vram", "128",
+                   "--paravirtprovider", "kvm" # for Linux Guests 
+    ]
 
     # Customize number of CPUs
     vb.cpus = 1
