@@ -6,6 +6,7 @@
 
 ## Avoid errors here and there
 export DEBIAN_FRONTEND=noninteractive # StackOverflow 500764
+sed -i -e '/^mesg n/d' /root/.profile
 
 ## Make /opt directory structure
 echo "[+] Creating /opt directory structure"
@@ -29,18 +30,18 @@ add-apt-repository ppa:abelcheung/lucid-dev-backports &> /dev/null # autotools, 
 (apt-get -qq update && apt-get -qq -y upgrade && apt-get -qq -y dist-upgrade) > /dev/null
 
 # Change default compilers to newer versions
-apt-get install -y --no-install-recommends gcc-4.8 g++-4.8
-sudo update-alternatives --remove-all gcc 
-sudo update-alternatives --remove-all g++
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 20
-sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 20
-sudo update-alternatives --config gcc
-sudo update-alternatives --config g++
+(apt-get -qq install -y --no-install-recommends gcc-4.8 g++-4.8 && \
+sudo update-alternatives --remove-all gcc && \
+sudo update-alternatives --remove-all g++ && \
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 20 && \
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 20 && \
+sudo update-alternatives --config gcc && \
+sudo update-alternatives --config g++ ) > /dev/null
 
 # Building tools
-apt-get install -y --no-install-recommends git autoconf automake cmake autotools-dev \
+apt-get -qq install -y --no-install-recommends git autoconf automake cmake autotools-dev \
 										   build-essential libfftw3-3 libfftw3-dev > /dev/null
 
 # Python libs
-apt-get install -y --no-install-recommends python-numpy python-matplotlib \
+apt-get -qq install -y --no-install-recommends python-numpy python-matplotlib \
                                            python-dev > /dev/null

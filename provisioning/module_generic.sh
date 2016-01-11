@@ -34,7 +34,7 @@ then
 else
 	git clone https://github.com/biopython/biopython /opt/software/biopython > /dev/null
 fi
-(cd /opt/software/biopython && python setup.py build && python setup.py install) > /dev/null
+(cd /opt/software/biopython && CPPFLAGS="-w" python setup.py build && python setup.py install) > /dev/null
 
 echo "[++] Downloading & installing pymol-psico"
 if [ -d /opt/software/pymol-psico ]
@@ -44,19 +44,19 @@ then
 else
 	git clone https://github.com/JoaoRodrigues/pymol-psico.git /opt/software/pymol-psico > /dev/null
 fi
-(cd /opt/software/pymol-psico && git checkout legacy_support && python setup.py install) > /dev/null
+(cd /opt/software/pymol-psico && git checkout legacy_support && CPPFLAGS="-w" python setup.py install) > /dev/null
 
 echo "[++] Downloading & installing freesasa"
 if [ -d /opt/software/freesasa ]
 then
 	cd /opt/software/freesasa
-	git checkout with-configure
+	git checkout with-configure 
 	git reset HEAD --hard
 	git pull origin with-configure
-	aclocal && automake
+	autoconf && automake > /dev/null
 else
 	git clone https://github.com/JoaoRodrigues/freesasa /opt/software/freesasa > /dev/null
 fi
-(cd /opt/software/freesasa && git checkout with-configure && aclocal && automake && ./configure && make ) > /dev/null
+(cd /opt/software/freesasa && git checkout with-configure && autoconf && automake && ./configure -q && CPPFLAGS="-w" make ) > /dev/null
 ln -sf /opt/software/freesasa/src/freesasa /opt/bin/
 ln -sf /opt/software/freesasa/share/naccess.config /opt/share/

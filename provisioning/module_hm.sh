@@ -16,9 +16,9 @@ fi
 wget -q -O /opt/software/hmmer-3.1b2.tar.gz http://selab.janelia.org/software/hmmer3/3.1b2/hmmer-3.1b2.tar.gz > /dev/null
 
 (cd /opt/software && tar -xzf hmmer-3.1b2.tar.gz && cd hmmer-3.1b2 && \
-    ./configure --prefix=/opt/software/hmmer3.1b2/ && make && make install) > /dev/null
+    ./configure -q --prefix=/opt/software/hmmer3.1b2/ && CPPFLAGS="-w" make && CPPFLAGS="-w" make install) > /dev/null
 
-(cd /opt/software/hmmer-3.1b2/easel && make install) > /dev/null
+(cd /opt/software/hmmer-3.1b2/easel && CPPFLAGS="-w" make install) > /dev/null
 
 rm -rf /opt/software/hmmer-3.1b2.tar.gz /opt/software/hmmer-3.1b2/
 ln -sf /opt/software/hmmer3.1b2/bin/* /opt/bin/
