@@ -24,12 +24,22 @@ chown haddocker:haddocker ~haddocker/.bash_profile
 echo "[+] Updating system and installing packages"
 add-apt-repository ppa:lucid-bleed/ppa &> /dev/null # dpkg, req. for MODELLER
 add-apt-repository ppa:roblib/ppa &> /dev/null # cmake, req. for GROMACS
+add-apt-repository ppa:ubuntu-toolchain-r/test >& /dev/null # gcc 4.8 req. for GMX
 add-apt-repository ppa:abelcheung/lucid-dev-backports &> /dev/null # autotools, req. for freesasa
 (apt-get -qq update && apt-get -qq -y upgrade && apt-get -qq -y dist-upgrade) > /dev/null
 
+# Change default compilers to newer versions
+apt-get install -y --no-install-recommends gcc-4.8 g++-4.8
+sudo update-alternatives --remove-all gcc 
+sudo update-alternatives --remove-all g++
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 20
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 20
+sudo update-alternatives --config gcc
+sudo update-alternatives --config g++
+
 # Building tools
-apt-get install -y --no-install-recommends git cmake autotools-dev automake \
-										   build-essential libboost1.46-dev > /dev/null
+apt-get install -y --no-install-recommends git autoconf automake cmake autotools-dev \
+										   build-essential libfftw3-3 libfftw3-dev > /dev/null
 
 # Python libs
 apt-get install -y --no-install-recommends python-numpy python-matplotlib \

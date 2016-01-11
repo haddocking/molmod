@@ -19,7 +19,7 @@ then
 fi
 
 (cd /opt/software && tar -xzf gromacs-5.1.1.tar.gz && cd gromacs-5.1.1 && mkdir build && cd build && \
-    cmake ../ -DGMX_BUILD_OWN_FFTW=ON -DCMAKE_INSTALL_PREFIX=/opt/software/gromacs5 && make && \
+    cmake ../ -DGMX_BUILD_OWN_FFTW=OFF -DCMAKE_INSTALL_PREFIX=/opt/software/gromacs5 && make && \
     make install) > /dev/null
 
 rm -rf /opt/software/gromacs-5.1.1 /opt/software/gromacs-5.1.1.tar.gz
