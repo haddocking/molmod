@@ -44,19 +44,19 @@ then
 else
 	git clone https://github.com/JoaoRodrigues/pymol-psico.git /opt/software/pymol-psico > /dev/null
 fi
-(cd /opt/software/pymol-psico && git checkout legacy_support && CPPFLAGS="-w" python setup.py install) > /dev/null
+(cd /opt/software/pymol-psico && git checkout -q legacy_support && CPPFLAGS="-w" python setup.py install) > /dev/null
 
 echo "[++] Downloading & installing freesasa"
 if [ -d /opt/software/freesasa ]
 then
 	cd /opt/software/freesasa
-	git checkout with-configure 
+	git checkout -q with-configure 
 	git reset HEAD --hard
 	git pull origin with-configure
-	autoconf && automake > /dev/null
+	aclocal && autoconf && automake > /dev/null
 else
 	git clone https://github.com/JoaoRodrigues/freesasa /opt/software/freesasa > /dev/null
 fi
-(cd /opt/software/freesasa && git checkout with-configure && autoconf && automake && ./configure -q && CPPFLAGS="-w" make ) > /dev/null
+(cd /opt/software/freesasa && git checkout -q with-configure && aclocal && autoconf && automake && ./configure -q && CPPFLAGS="-w" make ) > /dev/null
 ln -sf /opt/software/freesasa/src/freesasa /opt/bin/
 ln -sf /opt/software/freesasa/share/naccess.config /opt/share/

@@ -31,12 +31,12 @@ add-apt-repository ppa:abelcheung/lucid-dev-backports &> /dev/null # autotools, 
 
 # Change default compilers to newer versions
 (apt-get -qq install -y --no-install-recommends gcc-4.8 g++-4.8 && \
-sudo update-alternatives --remove-all gcc && \
-sudo update-alternatives --remove-all g++ && \
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 20 && \
-sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 20 && \
-sudo update-alternatives --config gcc && \
-sudo update-alternatives --config g++ ) > /dev/null
+sudo update-alternatives --quiet --remove-all gcc && \
+sudo update-alternatives --quiet --remove-all g++ && \
+sudo update-alternatives --quiet --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 20 && \
+sudo update-alternatives --quiet --install /usr/bin/g++ g++ /usr/bin/g++-4.8 20 && \
+sudo update-alternatives --quiet --config gcc && \
+sudo update-alternatives --quiet --config g++ ) > /dev/null
 
 # Building tools
 apt-get -qq install -y --no-install-recommends git autoconf automake cmake autotools-dev \
