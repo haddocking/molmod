@@ -46,6 +46,10 @@ else
 fi
 (cd /opt/software/pymol-psico && git checkout -q legacy_support && CPPFLAGS="-w" python setup.py install) > /dev/null
 
+# Add pymolrc file
+echo "import psico.fullinit" > /home/haddocker/.pymolrc
+echo "run /opt/bin/build_seq.py" >> /home/haddocker/.pymolrc
+
 echo "[++] Downloading & installing freesasa"
 if [ -d /opt/software/freesasa ]
 then
